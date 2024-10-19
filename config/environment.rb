@@ -2,10 +2,8 @@ require "yaml"
 require "active_record"
 
 # recursively requires all files in ./lib and down that end in .rb
-Dir.glob("./lib/*").each do |folder|
-  Dir.glob("#{folder}/*.rb").each do |file|
-    require file
-  end
+Dir.glob(File.expand_path("../lib/**/*.rb", __dir__)).sort.each do |file|
+  require file
 end
 
 # activerecord settings
